@@ -12,12 +12,13 @@ public class operationOnString {
 
     public String splitMethod(String sentence) {
 
-        String[] words = sentence.split("\\s+");
-        //String[] words = sentence.split("[,;.\\s]+");
+        String[] words = sentence.split("(?=[,.])|\\s+");
 
         StringBuilder builder = new StringBuilder();
+
         for (String word : words) {
             List<Character> letters = new ArrayList<>();
+
             for (char letter : word.toCharArray()) {
                 letters.add(letter);
             }
@@ -29,8 +30,8 @@ public class operationOnString {
             }
             builder.append(" ");
         }
-        return builder.toString();
-    }
+            return builder.toString().replace(" ,",",").replace(" .",".");
+        }
 
     public String strinTokanizerMethod(String sentence) {
 
